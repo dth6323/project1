@@ -1,0 +1,105 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-violations-heading" data-cy="ViolationsCreateUpdateHeading" jhiTranslate="project1App.violations.home.createOrEditLabel">
+        Create or edit a Violations
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="project1App.violations.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_violationTime" jhiTranslate="project1App.violations.violationTime">Violation Time</label>
+          <div class="d-flex">
+            <input
+              id="field_violationTime"
+              data-cy="violationTime"
+              type="datetime-local"
+              class="form-control"
+              name="violationTime"
+              formControlName="violationTime"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_location" jhiTranslate="project1App.violations.location">Location</label>
+          <input type="text" class="form-control" name="location" id="field_location" data-cy="location" formControlName="location" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_status" jhiTranslate="project1App.violations.status">Status</label>
+          <input type="text" class="form-control" name="status" id="field_status" data-cy="status" formControlName="status" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_evidenceImage" jhiTranslate="project1App.violations.evidenceImage">Evidence Image</label>
+          <input
+            type="text"
+            class="form-control"
+            name="evidenceImage"
+            id="field_evidenceImage"
+            data-cy="evidenceImage"
+            formControlName="evidenceImage"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_createdAt" jhiTranslate="project1App.violations.createdAt">Created At</label>
+          <div class="d-flex">
+            <input
+              id="field_createdAt"
+              data-cy="createdAt"
+              type="datetime-local"
+              class="form-control"
+              name="createdAt"
+              formControlName="createdAt"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label for="field_vehicleRegistrations" jhiTranslate="project1App.violations.vehicleRegistrations">Vehicle Registrations</label>
+          <select
+            class="form-control"
+            id="field_vehicleRegistrations"
+            data-cy="vehicleRegistrations"
+            multiple
+            name="vehicleRegistrations"
+            formControlName="vehicleRegistrations"
+            [compareWith]="compareVehicleRegistrations"
+          >
+            @for (vehicleRegistrationsOption of vehicleRegistrationsSharedCollection; track $index) {
+              <option [ngValue]="vehicleRegistrationsOption">{{ vehicleRegistrationsOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

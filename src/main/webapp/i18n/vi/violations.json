@@ -1,0 +1,30 @@
+{
+  "project1App": {
+    "violations": {
+      "home": {
+        "title": "Violations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Violations",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Violations",
+        "notFound": "No Violations found"
+      },
+      "created": "Một Violations mới được tạo với định danh {{ param }}",
+      "updated": "Một Violations cập nhật với định danh {{ param }}",
+      "deleted": "Một Violations đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Violations {{ id }}?"
+      },
+      "detail": {
+        "title": "Violations"
+      },
+      "id": "ID",
+      "violationTime": "Violation Time",
+      "location": "Location",
+      "status": "Status",
+      "evidenceImage": "Evidence Image",
+      "createdAt": "Created At",
+      "typeViolation": "Type Violation",
+      "vehicleRegistrations": "Vehicle Registrations"
+    }
+  }
+}

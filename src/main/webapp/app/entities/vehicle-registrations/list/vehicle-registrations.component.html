@@ -1,0 +1,196 @@
+<div>
+  <h2 id="page-heading" data-cy="VehicleRegistrationsHeading">
+    <span jhiTranslate="project1App.vehicleRegistrations.home.title">Vehicle Registrations</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="project1App.vehicleRegistrations.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-vehicle-registrations"
+        [routerLink]="['/vehicle-registrations/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="project1App.vehicleRegistrations.home.createLabel">Create a new Vehicle Registrations</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (vehicleRegistrations?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="project1App.vehicleRegistrations.home.notFound">No Vehicle Registrations found</span>
+    </div>
+  }
+
+  @if (vehicleRegistrations && vehicleRegistrations.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vehicleNumber">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.vehicleNumber">Vehicle Number</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="ownerName">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.ownerName">Owner Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="engineNum">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.engineNum">Engine Num</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="chassisNum">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.chassisNum">Chassis Num</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vehicleType">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.vehicleType">Vehicle Type</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="brand">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.brand">Brand</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="modelCode">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.modelCode">Model Code</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="color">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.color">Color</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="capacity">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.capacity">Capacity</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="registrationDate">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.registrationDate">Registration Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="expirationDate">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.expirationDate">Expiration Date</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="issuedBy">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.issuedBy">Issued By</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="violations.id">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.vehicleRegistrations.violations">Violations</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (vehicleRegistrations of vehicleRegistrations; track trackId(vehicleRegistrations)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/vehicle-registrations', vehicleRegistrations.id, 'view']">{{ vehicleRegistrations.id }}</a>
+              </td>
+              <td>{{ vehicleRegistrations.vehicleNumber }}</td>
+              <td>{{ vehicleRegistrations.ownerName }}</td>
+              <td>{{ vehicleRegistrations.engineNum }}</td>
+              <td>{{ vehicleRegistrations.chassisNum }}</td>
+              <td>{{ vehicleRegistrations.vehicleType }}</td>
+              <td>{{ vehicleRegistrations.brand }}</td>
+              <td>{{ vehicleRegistrations.modelCode }}</td>
+              <td>{{ vehicleRegistrations.color }}</td>
+              <td>{{ vehicleRegistrations.capacity }}</td>
+              <td>{{ vehicleRegistrations.registrationDate | formatMediumDatetime }}</td>
+              <td>{{ vehicleRegistrations.expirationDate | formatMediumDatetime }}</td>
+              <td>{{ vehicleRegistrations.issuedBy }}</td>
+              <td>
+                @for (violations of vehicleRegistrations.violations; track $index; let last = $last) {
+                  <span>
+                    <a class="form-control-static" [routerLink]="['/violations', violations.id, 'view']">{{ violations.id }}</a
+                    >{{ last ? '' : ', ' }}
+                  </span>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a
+                    [routerLink]="['/vehicle-registrations', vehicleRegistrations.id, 'view']"
+                    class="btn btn-info btn-sm"
+                    data-cy="entityDetailsButton"
+                  >
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a
+                    [routerLink]="['/vehicle-registrations', vehicleRegistrations.id, 'edit']"
+                    class="btn btn-primary btn-sm"
+                    data-cy="entityEditButton"
+                  >
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(vehicleRegistrations)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

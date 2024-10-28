@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (cCCD(); as cCCDRef) {
+      <div>
+        <h2 data-cy="cCCDDetailsHeading"><span jhiTranslate="project1App.cCCD.detail.title">CCCD</span></h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ cCCDRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.fullName">Full Name</span></dt>
+          <dd>
+            <span>{{ cCCDRef.fullName }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.dateBirth">Date Birth</span></dt>
+          <dd>
+            <span>{{ cCCDRef.dateBirth | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.sex">Sex</span></dt>
+          <dd>
+            <span>{{ cCCDRef.sex }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.nationality">Nationality</span></dt>
+          <dd>
+            <span>{{ cCCDRef.nationality }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.placeOrigin">Place Origin</span></dt>
+          <dd>
+            <span>{{ cCCDRef.placeOrigin }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.placeResidence">Place Residence</span></dt>
+          <dd>
+            <span>{{ cCCDRef.placeResidence }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.dateIssue">Date Issue</span></dt>
+          <dd>
+            <span>{{ cCCDRef.dateIssue | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.dateExpiry">Date Expiry</span></dt>
+          <dd>
+            <span>{{ cCCDRef.dateExpiry | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.personalIdentification">Personal Identification</span></dt>
+          <dd>
+            <span>{{ cCCDRef.personalIdentification }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.cCCD.vehicleRegistrations">Vehicle Registrations</span></dt>
+          <dd>
+            @if (cCCD()!.vehicleRegistrations) {
+              <div>
+                <a [routerLink]="['/vehicle-registrations', cCCD()!.vehicleRegistrations?.id, 'view']">{{
+                  cCCDRef.vehicleRegistrations?.id
+                }}</a>
+              </div>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/cccd', cCCDRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

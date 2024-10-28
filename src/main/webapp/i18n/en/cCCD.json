@@ -1,0 +1,33 @@
+{
+  "project1App": {
+    "cCCD": {
+      "home": {
+        "title": "CCCDS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new CCCD",
+        "createOrEditLabel": "Create or edit a CCCD",
+        "notFound": "No CCCDS found"
+      },
+      "created": "A new CCCD is created with identifier {{ param }}",
+      "updated": "A CCCD is updated with identifier {{ param }}",
+      "deleted": "A CCCD is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete CCCD {{ id }}?"
+      },
+      "detail": {
+        "title": "CCCD"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "dateBirth": "Date Birth",
+      "sex": "Sex",
+      "nationality": "Nationality",
+      "placeOrigin": "Place Origin",
+      "placeResidence": "Place Residence",
+      "dateIssue": "Date Issue",
+      "dateExpiry": "Date Expiry",
+      "personalIdentification": "Personal Identification",
+      "vehicleRegistrations": "Vehicle Registrations"
+    }
+  }
+}

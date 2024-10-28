@@ -1,0 +1,89 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    @if (vehicleRegistrations(); as vehicleRegistrationsRef) {
+      <div>
+        <h2 data-cy="vehicleRegistrationsDetailsHeading">
+          <span jhiTranslate="project1App.vehicleRegistrations.detail.title">Vehicle Registrations</span>
+        </h2>
+
+        <hr />
+
+        <jhi-alert-error></jhi-alert-error>
+
+        <jhi-alert></jhi-alert>
+
+        <dl class="row-md jh-entity-details">
+          <dt><span jhiTranslate="global.field.id">ID</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.id }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.vehicleNumber">Vehicle Number</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.vehicleNumber }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.ownerName">Owner Name</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.ownerName }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.engineNum">Engine Num</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.engineNum }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.chassisNum">Chassis Num</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.chassisNum }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.vehicleType">Vehicle Type</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.vehicleType }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.brand">Brand</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.brand }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.modelCode">Model Code</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.modelCode }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.color">Color</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.color }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.capacity">Capacity</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.capacity }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.registrationDate">Registration Date</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.registrationDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.expirationDate">Expiration Date</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.expirationDate | formatMediumDatetime }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.issuedBy">Issued By</span></dt>
+          <dd>
+            <span>{{ vehicleRegistrationsRef.issuedBy }}</span>
+          </dd>
+          <dt><span jhiTranslate="project1App.vehicleRegistrations.violations">Violations</span></dt>
+          <dd>
+            @for (violations of vehicleRegistrationsRef.violations; track $index; let last = $last) {
+              <span>
+                <a [routerLink]="['/violations', violations.id, 'view']">{{ violations?.id }}</a
+                >{{ last ? '' : ', ' }}
+              </span>
+            }
+          </dd>
+        </dl>
+
+        <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+          <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+        </button>
+
+        <button type="button" [routerLink]="['/vehicle-registrations', vehicleRegistrationsRef.id, 'edit']" class="btn btn-primary">
+          <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+      </div>
+    }
+  </div>
+</div>

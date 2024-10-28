@@ -1,0 +1,55 @@
+{
+  "annotations": {
+    "changelogDate": "20241024081725"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "fullName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateBirth",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "sex",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "nationality",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "placeOrigin",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "placeResidence",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "dateIssue",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "dateExpiry",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "personalIdentification",
+      "fieldType": "String"
+    }
+  ],
+  "name": "CCCD",
+  "relationships": [
+    {
+      "otherEntityName": "vehicleRegistrations",
+      "otherEntityRelationshipName": "cCCD",
+      "relationshipName": "vehicleRegistrations",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no"
+}

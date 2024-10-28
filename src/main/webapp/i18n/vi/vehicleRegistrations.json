@@ -1,0 +1,37 @@
+{
+  "project1App": {
+    "vehicleRegistrations": {
+      "home": {
+        "title": "Vehicle Registrations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Vehicle Registrations",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Vehicle Registrations",
+        "notFound": "No Vehicle Registrations found"
+      },
+      "created": "Một Vehicle Registrations mới được tạo với định danh {{ param }}",
+      "updated": "Một Vehicle Registrations cập nhật với định danh {{ param }}",
+      "deleted": "Một Vehicle Registrations đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Vehicle Registrations {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Registrations"
+      },
+      "id": "ID",
+      "vehicleNumber": "Vehicle Number",
+      "ownerName": "Owner Name",
+      "engineNum": "Engine Num",
+      "chassisNum": "Chassis Num",
+      "vehicleType": "Vehicle Type",
+      "brand": "Brand",
+      "modelCode": "Model Code",
+      "color": "Color",
+      "capacity": "Capacity",
+      "registrationDate": "Registration Date",
+      "expirationDate": "Expiration Date",
+      "issuedBy": "Issued By",
+      "violations": "Violations",
+      "cCCD": "C CCD"
+    }
+  }
+}

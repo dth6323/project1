@@ -1,0 +1,165 @@
+<div>
+  <h2 id="page-heading" data-cy="CCCDHeading">
+    <span jhiTranslate="project1App.cCCD.home.title">CCCDS</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [animation]="isLoading ? 'spin' : undefined"></fa-icon>
+        <span jhiTranslate="project1App.cCCD.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-cccd"
+        [routerLink]="['/cccd/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="project1App.cCCD.home.createLabel">Create a new CCCD</span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  @if (cCCDS?.length === 0) {
+    <div class="alert alert-warning" id="no-result">
+      <span jhiTranslate="project1App.cCCD.home.notFound">No CCCDS found</span>
+    </div>
+  }
+
+  @if (cCCDS && cCCDS.length > 0) {
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr jhiSort [sortState]="sortState" (sortChange)="navigateToWithComponentValues($event)">
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span jhiTranslate="global.field.id">ID</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="fullName">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.fullName">Full Name</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateBirth">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.dateBirth">Date Birth</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="sex">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.sex">Sex</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="nationality">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.nationality">Nationality</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="placeOrigin">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.placeOrigin">Place Origin</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="placeResidence">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.placeResidence">Place Residence</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateIssue">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.dateIssue">Date Issue</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="dateExpiry">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.dateExpiry">Date Expiry</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="personalIdentification">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.personalIdentification">Personal Identification</span>
+
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="vehicleRegistrations.id">
+              <div class="d-flex">
+                <span jhiTranslate="project1App.cCCD.vehicleRegistrations">Vehicle Registrations</span>
+                <fa-icon class="p-1" icon="sort"></fa-icon>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (cCCD of cCCDS; track trackId(cCCD)) {
+            <tr data-cy="entityTable">
+              <td>
+                <a [routerLink]="['/cccd', cCCD.id, 'view']">{{ cCCD.id }}</a>
+              </td>
+              <td>{{ cCCD.fullName }}</td>
+              <td>{{ cCCD.dateBirth | formatMediumDatetime }}</td>
+              <td>{{ cCCD.sex }}</td>
+              <td>{{ cCCD.nationality }}</td>
+              <td>{{ cCCD.placeOrigin }}</td>
+              <td>{{ cCCD.placeResidence }}</td>
+              <td>{{ cCCD.dateIssue | formatMediumDatetime }}</td>
+              <td>{{ cCCD.dateExpiry | formatMediumDatetime }}</td>
+              <td>{{ cCCD.personalIdentification }}</td>
+              <td>
+                @if (cCCD.vehicleRegistrations) {
+                  <div>
+                    <a [routerLink]="['/vehicle-registrations', cCCD.vehicleRegistrations.id, 'view']">{{
+                      cCCD.vehicleRegistrations.id
+                    }}</a>
+                  </div>
+                }
+              </td>
+              <td class="text-end">
+                <div class="btn-group">
+                  <a [routerLink]="['/cccd', cCCD.id, 'view']" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                    <fa-icon icon="eye"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                  </a>
+
+                  <a [routerLink]="['/cccd', cCCD.id, 'edit']" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                    <fa-icon icon="pencil-alt"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                  </a>
+
+                  <button type="submit" (click)="delete(cCCD)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                    <fa-icon icon="times"></fa-icon>
+                    <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</div>

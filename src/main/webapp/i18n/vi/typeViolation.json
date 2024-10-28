@@ -1,0 +1,26 @@
+{
+  "project1App": {
+    "typeViolation": {
+      "home": {
+        "title": "Type Violations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một Type Violation",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật Type Violation",
+        "notFound": "No Type Violations found"
+      },
+      "created": "Một Type Violation mới được tạo với định danh {{ param }}",
+      "updated": "Một Type Violation cập nhật với định danh {{ param }}",
+      "deleted": "Một Type Violation đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa Type Violation {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Violation"
+      },
+      "id": "ID",
+      "violationName": "Violation Name",
+      "fineAmount": "Fine Amount",
+      "violations": "Violations"
+    }
+  }
+}

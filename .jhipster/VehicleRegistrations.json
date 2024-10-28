@@ -1,0 +1,74 @@
+{
+  "annotations": {
+    "changelogDate": "20241024081727"
+  },
+  "applications": "*",
+  "fields": [
+    {
+      "fieldName": "vehicleNumber",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "ownerName",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "engineNum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "chassisNum",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "vehicleType",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "brand",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "modelCode",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "color",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "capacity",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "registrationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "expirationDate",
+      "fieldType": "Instant"
+    },
+    {
+      "fieldName": "issuedBy",
+      "fieldType": "String"
+    }
+  ],
+  "name": "VehicleRegistrations",
+  "relationships": [
+    {
+      "otherEntityName": "violations",
+      "otherEntityRelationshipName": "vehicleRegistrations",
+      "relationshipName": "violations",
+      "relationshipSide": "left",
+      "relationshipType": "many-to-many"
+    },
+    {
+      "otherEntityName": "cCCD",
+      "otherEntityRelationshipName": "vehicleRegistrations",
+      "relationshipName": "cCCD",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no"
+}

@@ -1,0 +1,164 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-vehicle-registrations-heading"
+        data-cy="VehicleRegistrationsCreateUpdateHeading"
+        jhiTranslate="project1App.vehicleRegistrations.home.createOrEditLabel"
+      >
+        Create or edit a Vehicle Registrations
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="project1App.vehicleRegistrations.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vehicleNumber" jhiTranslate="project1App.vehicleRegistrations.vehicleNumber"
+            >Vehicle Number</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleNumber"
+            id="field_vehicleNumber"
+            data-cy="vehicleNumber"
+            formControlName="vehicleNumber"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_ownerName" jhiTranslate="project1App.vehicleRegistrations.ownerName">Owner Name</label>
+          <input type="text" class="form-control" name="ownerName" id="field_ownerName" data-cy="ownerName" formControlName="ownerName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_engineNum" jhiTranslate="project1App.vehicleRegistrations.engineNum">Engine Num</label>
+          <input type="text" class="form-control" name="engineNum" id="field_engineNum" data-cy="engineNum" formControlName="engineNum" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_chassisNum" jhiTranslate="project1App.vehicleRegistrations.chassisNum">Chassis Num</label>
+          <input
+            type="text"
+            class="form-control"
+            name="chassisNum"
+            id="field_chassisNum"
+            data-cy="chassisNum"
+            formControlName="chassisNum"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vehicleType" jhiTranslate="project1App.vehicleRegistrations.vehicleType">Vehicle Type</label>
+          <input
+            type="text"
+            class="form-control"
+            name="vehicleType"
+            id="field_vehicleType"
+            data-cy="vehicleType"
+            formControlName="vehicleType"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_brand" jhiTranslate="project1App.vehicleRegistrations.brand">Brand</label>
+          <input type="text" class="form-control" name="brand" id="field_brand" data-cy="brand" formControlName="brand" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_modelCode" jhiTranslate="project1App.vehicleRegistrations.modelCode">Model Code</label>
+          <input type="text" class="form-control" name="modelCode" id="field_modelCode" data-cy="modelCode" formControlName="modelCode" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_color" jhiTranslate="project1App.vehicleRegistrations.color">Color</label>
+          <input type="text" class="form-control" name="color" id="field_color" data-cy="color" formControlName="color" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_capacity" jhiTranslate="project1App.vehicleRegistrations.capacity">Capacity</label>
+          <input type="text" class="form-control" name="capacity" id="field_capacity" data-cy="capacity" formControlName="capacity" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_registrationDate" jhiTranslate="project1App.vehicleRegistrations.registrationDate"
+            >Registration Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_registrationDate"
+              data-cy="registrationDate"
+              type="datetime-local"
+              class="form-control"
+              name="registrationDate"
+              formControlName="registrationDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_expirationDate" jhiTranslate="project1App.vehicleRegistrations.expirationDate"
+            >Expiration Date</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_expirationDate"
+              data-cy="expirationDate"
+              type="datetime-local"
+              class="form-control"
+              name="expirationDate"
+              formControlName="expirationDate"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_issuedBy" jhiTranslate="project1App.vehicleRegistrations.issuedBy">Issued By</label>
+          <input type="text" class="form-control" name="issuedBy" id="field_issuedBy" data-cy="issuedBy" formControlName="issuedBy" />
+        </div>
+
+        <div class="mb-3">
+          <label for="field_violations" jhiTranslate="project1App.vehicleRegistrations.violations">Violations</label>
+          <select
+            class="form-control"
+            id="field_violations"
+            data-cy="violations"
+            multiple
+            name="violations"
+            formControlName="violations"
+            [compareWith]="compareViolations"
+          >
+            @for (violationsOption of violationsSharedCollection; track $index) {
+              <option [ngValue]="violationsOption">{{ violationsOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

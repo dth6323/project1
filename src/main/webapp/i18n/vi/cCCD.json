@@ -1,0 +1,33 @@
+{
+  "project1App": {
+    "cCCD": {
+      "home": {
+        "title": "CCCDS",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Thêm mới một CCCD",
+        "createOrEditLabel": "Thêm mới hoặc cập nhật CCCD",
+        "notFound": "No CCCDS found"
+      },
+      "created": "Một CCCD mới được tạo với định danh {{ param }}",
+      "updated": "Một CCCD cập nhật với định danh {{ param }}",
+      "deleted": "Một CCCD đã xóa với định danh {{ param }}",
+      "delete": {
+        "question": "Bạn có chắc là muốn xóa CCCD {{ id }}?"
+      },
+      "detail": {
+        "title": "CCCD"
+      },
+      "id": "ID",
+      "fullName": "Full Name",
+      "dateBirth": "Date Birth",
+      "sex": "Sex",
+      "nationality": "Nationality",
+      "placeOrigin": "Place Origin",
+      "placeResidence": "Place Residence",
+      "dateIssue": "Date Issue",
+      "dateExpiry": "Date Expiry",
+      "personalIdentification": "Personal Identification",
+      "vehicleRegistrations": "Vehicle Registrations"
+    }
+  }
+}

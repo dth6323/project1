@@ -1,0 +1,37 @@
+{
+  "project1App": {
+    "vehicleRegistrations": {
+      "home": {
+        "title": "Vehicle Registrations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Vehicle Registrations",
+        "createOrEditLabel": "Create or edit a Vehicle Registrations",
+        "notFound": "No Vehicle Registrations found"
+      },
+      "created": "A new Vehicle Registrations is created with identifier {{ param }}",
+      "updated": "A Vehicle Registrations is updated with identifier {{ param }}",
+      "deleted": "A Vehicle Registrations is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Vehicle Registrations {{ id }}?"
+      },
+      "detail": {
+        "title": "Vehicle Registrations"
+      },
+      "id": "ID",
+      "vehicleNumber": "Vehicle Number",
+      "ownerName": "Owner Name",
+      "engineNum": "Engine Num",
+      "chassisNum": "Chassis Num",
+      "vehicleType": "Vehicle Type",
+      "brand": "Brand",
+      "modelCode": "Model Code",
+      "color": "Color",
+      "capacity": "Capacity",
+      "registrationDate": "Registration Date",
+      "expirationDate": "Expiration Date",
+      "issuedBy": "Issued By",
+      "violations": "Violations",
+      "cCCD": "C CCD"
+    }
+  }
+}

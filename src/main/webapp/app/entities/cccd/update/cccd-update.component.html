@@ -1,0 +1,160 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <form name="editForm" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2 id="jhi-cccd-heading" data-cy="CCCDCreateUpdateHeading" jhiTranslate="project1App.cCCD.home.createOrEditLabel">
+        Create or edit a CCCD
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        @if (editForm.controls.id.value !== null) {
+          <div class="mb-3">
+            <label class="form-label" for="field_id" jhiTranslate="project1App.cCCD.id">ID</label>
+            <input type="number" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+          </div>
+        }
+
+        <div class="mb-3">
+          <label class="form-label" for="field_fullName" jhiTranslate="project1App.cCCD.fullName">Full Name</label>
+          <input type="text" class="form-control" name="fullName" id="field_fullName" data-cy="fullName" formControlName="fullName" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dateBirth" jhiTranslate="project1App.cCCD.dateBirth">Date Birth</label>
+          <div class="d-flex">
+            <input
+              id="field_dateBirth"
+              data-cy="dateBirth"
+              type="datetime-local"
+              class="form-control"
+              name="dateBirth"
+              formControlName="dateBirth"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_sex" jhiTranslate="project1App.cCCD.sex">Sex</label>
+          <input type="text" class="form-control" name="sex" id="field_sex" data-cy="sex" formControlName="sex" />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_nationality" jhiTranslate="project1App.cCCD.nationality">Nationality</label>
+          <input
+            type="text"
+            class="form-control"
+            name="nationality"
+            id="field_nationality"
+            data-cy="nationality"
+            formControlName="nationality"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_placeOrigin" jhiTranslate="project1App.cCCD.placeOrigin">Place Origin</label>
+          <input
+            type="text"
+            class="form-control"
+            name="placeOrigin"
+            id="field_placeOrigin"
+            data-cy="placeOrigin"
+            formControlName="placeOrigin"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_placeResidence" jhiTranslate="project1App.cCCD.placeResidence">Place Residence</label>
+          <input
+            type="text"
+            class="form-control"
+            name="placeResidence"
+            id="field_placeResidence"
+            data-cy="placeResidence"
+            formControlName="placeResidence"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dateIssue" jhiTranslate="project1App.cCCD.dateIssue">Date Issue</label>
+          <div class="d-flex">
+            <input
+              id="field_dateIssue"
+              data-cy="dateIssue"
+              type="datetime-local"
+              class="form-control"
+              name="dateIssue"
+              formControlName="dateIssue"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_dateExpiry" jhiTranslate="project1App.cCCD.dateExpiry">Date Expiry</label>
+          <div class="d-flex">
+            <input
+              id="field_dateExpiry"
+              data-cy="dateExpiry"
+              type="datetime-local"
+              class="form-control"
+              name="dateExpiry"
+              formControlName="dateExpiry"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_personalIdentification" jhiTranslate="project1App.cCCD.personalIdentification"
+            >Personal Identification</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="personalIdentification"
+            id="field_personalIdentification"
+            data-cy="personalIdentification"
+            formControlName="personalIdentification"
+          />
+        </div>
+
+        <div class="mb-3">
+          <label class="form-label" for="field_vehicleRegistrations" jhiTranslate="project1App.cCCD.vehicleRegistrations"
+            >Vehicle Registrations</label
+          >
+          <select
+            class="form-control"
+            id="field_vehicleRegistrations"
+            data-cy="vehicleRegistrations"
+            name="vehicleRegistrations"
+            formControlName="vehicleRegistrations"
+            [compareWith]="compareVehicleRegistrations"
+          >
+            <option [ngValue]="null"></option>
+            @for (vehicleRegistrationsOption of vehicleRegistrationsSharedCollection; track $index) {
+              <option [ngValue]="vehicleRegistrationsOption">{{ vehicleRegistrationsOption.id }}</option>
+            }
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" data-cy="entityCreateCancelButton" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

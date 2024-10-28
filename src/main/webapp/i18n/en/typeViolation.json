@@ -1,0 +1,26 @@
+{
+  "project1App": {
+    "typeViolation": {
+      "home": {
+        "title": "Type Violations",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Type Violation",
+        "createOrEditLabel": "Create or edit a Type Violation",
+        "notFound": "No Type Violations found"
+      },
+      "created": "A new Type Violation is created with identifier {{ param }}",
+      "updated": "A Type Violation is updated with identifier {{ param }}",
+      "deleted": "A Type Violation is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Type Violation {{ id }}?"
+      },
+      "detail": {
+        "title": "Type Violation"
+      },
+      "id": "ID",
+      "violationName": "Violation Name",
+      "fineAmount": "Fine Amount",
+      "violations": "Violations"
+    }
+  }
+}
