@@ -1,0 +1,46 @@
+entity CCCD {
+  fullName String,
+  dateBirth Instant,
+  sex String,
+  nationality String,
+  placeOrigin String,
+  placeResidence String,
+  dateIssue Instant,
+  dateExpiry Instant,
+  personalIdentification String
+}
+
+entity VehicleRegistrations {
+  vehicleNumber String,
+  ownerName String,
+  engineNum String,
+  chassisNum String,
+  vehicleType String,
+  brand String,
+  modelCode String,
+  color String,
+  capacity String,
+  registrationDate Instant,
+  expirationDate Instant,
+  issuedBy String
+}
+entity TypeViolation {
+  violationName String,
+  fineAmount BigDecimal
+}
+
+entity Violations {
+  violationTime Instant,
+  location String,
+  status String,
+  evidenceImage String,
+  createdAt Instant
+}
+
+relationship ManyToOne {
+  CCCD to VehicleRegistrations
+  TypeViolation to Violations
+}
+relationship ManyToMany{
+  VehicleRegistrations to Violations
+}

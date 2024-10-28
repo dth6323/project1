@@ -8,7 +8,10 @@
       "entities": {
         "main": "Entities",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)",
-        "adminAuthority": "Authority"
+        "cccd": "CCCD",
+        "typeViolation": "Type Violation",
+        "vehicleRegistrations": "Vehicle Registrations",
+        "violations": "Violations"
       },
       "account": {
         "main": "Account",
