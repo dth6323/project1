@@ -2,6 +2,7 @@ package com.mycompany.myapp.web.rest;
 
 import com.mycompany.myapp.domain.Violations;
 import com.mycompany.myapp.repository.ViolationsRepository;
+import com.mycompany.myapp.service.ViolationsClientService;
 import com.mycompany.myapp.web.rest.errors.BadRequestAlertException;
 import java.net.URI;
 import java.net.URISyntaxException;
@@ -12,6 +13,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import tech.jhipster.web.util.HeaderUtil;
@@ -29,13 +31,22 @@ public class ViolationsResource {
 
     private static final String ENTITY_NAME = "violations";
 
+    private final ViolationsClientService violationsClientService;
+
     @Value("${jhipster.clientApp.name}")
     private String applicationName;
 
     private final ViolationsRepository violationsRepository;
 
-    public ViolationsResource(ViolationsRepository violationsRepository) {
+    public ViolationsResource(ViolationsClientService violationsClientService, ViolationsRepository violationsRepository) {
+        this.violationsClientService = violationsClientService;
         this.violationsRepository = violationsRepository;
+    }
+
+    @PreAuthorize("hasAuthority('ROLE_ADMIN')")
+    @GetMapping("/search-by-plate")
+    public List<Violations> searchByLicensePlate(@RequestParam String licensePlate) {
+        return violationsClientService.searchByLicensePlate(licensePlate);
     }
 
     @PostMapping("")
@@ -154,12 +165,6 @@ public class ViolationsResource {
         return ResponseUtil.wrapOrNotFound(violations);
     }
 
-    /**
-     * {@code DELETE  /violations/:id} : delete the "id" violations.
-     *
-     * @param id the id of the violations to delete.
-     * @return the {@link ResponseEntity} with status {@code 204 (NO_CONTENT)}.
-     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteViolations(@PathVariable("id") Long id) {
         LOG.debug("REST request to delete Violations : {}", id);

@@ -21,6 +21,9 @@ logging:
     com.mycompany.myapp: DEBUG
 
 spring:
+  web:
+    resources:
+      static-locations: file:/uploads/
   devtools:
     restart:
       enabled: true

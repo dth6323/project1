@@ -32,6 +32,11 @@ export class ViolationsService {
 
   protected resourceUrl = this.applicationConfigService.getEndpointFor('api/violations');
 
+  searchByLicensePlate(licensePlate: string): Observable<IViolations[]> {
+    return this.http.get<IViolations[]>(`${this.resourceUrl}/search-by-plate`, {
+      params: { licensePlate },
+    });
+  }
   create(violations: NewViolations): Observable<EntityResponseType> {
     const copy = this.convertDateFromClient(violations);
     return this.http

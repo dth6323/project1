@@ -37,6 +37,14 @@ const violationsRoute: Routes = [
     },
     canActivate: [UserRouteAccessService],
   },
+  {
+    path: ':search',
+    loadComponent: () => import('./search/violations-search.component').then(m => m.YourSearchComponent),
+    resolve: {
+      violations: ViolationsResolve,
+    },
+    canActivate: [UserRouteAccessService],
+  },
 ];
 
 export default violationsRoute;

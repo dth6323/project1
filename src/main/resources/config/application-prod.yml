@@ -1,18 +1,3 @@
-# ===================================================================
-# Spring Boot configuration for the "prod" profile.
-#
-# This configuration overrides the application.yml file.
-#
-# More information on profiles: https://www.jhipster.tech/profiles/
-# More information on configuration properties: https://www.jhipster.tech/common-application-properties/
-# ===================================================================
-
-# ===================================================================
-# Standard Spring Boot properties.
-# Full reference is available at:
-# http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
-# ===================================================================
-
 logging:
   level:
     ROOT: INFO
@@ -26,6 +11,9 @@ management:
         enabled: false
 
 spring:
+  web:
+    resources:
+      static-locations: file:/uploads/
   devtools:
     restart:
       enabled: false
